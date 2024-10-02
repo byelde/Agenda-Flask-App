@@ -1,5 +1,5 @@
 from flask import Flask
-from .controllers import home_bp, add_bp, delete_bp, edit_bp
+from .blueprints import home_bp, add_bp, delete_bp, edit_bp
 
 # create app
 def create_app():

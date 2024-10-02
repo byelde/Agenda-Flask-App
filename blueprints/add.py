@@ -17,22 +17,20 @@ def add():
         contact_surname = request.form.get("surname")
         contact_number  = request.form.get("number")
 
-        if not (contact_name and contact_surname and contact_number ):
+        if not (contact_name and contact_surname and contact_number):
             flash("Preencha todos os campos.")
             return render_template("views/add.html")
         
         new_contact = {
-            "id": 0,
+            "id": str(uuid.uuid4()),
             "name": contact_name,
             "surname": contact_surname,
             "number": contact_number
         }
 
         if db.checkExists(new_contact):
-            flash("Number already registered.")
+            flash("Número já registrado.")
             return render_template("views/add.html")
-
-        new_contact["id"] = str(uuid.uuid4())
 
         db.saveNewContact(new_contact)
 

@@ -21,13 +21,11 @@ def saveNewContact(new_contac):
 
 def deleteContact(id):
     all_contacts_list = getContacts()
-
-    for contact in all_contacts_list:
-        if contact["id"] == id:
-            all_contacts_list.remove(contact)
-
-    with open("contacts.json", "w") as file:
-        file.write(json.dumps(all_contacts_list, indent=2))
+    contact = findContact(id)
+    # for contact in all_contacts_list:
+    #     if contact["id"] == id:
+    all_contacts_list.remove(contact)
+    saveContacts(all_contacts_list)
 
 
 def checkExists(input_contact):
@@ -46,8 +44,8 @@ def editContact(id, name, surname, number):
     for contact in all_contacts_list:
         if contact["id"] == id:
             if name: contact["name"] = name
-            if name: contact["surname"] = surname
-            if name: contact["number"] = number
+            if surname: contact["surname"] = surname
+            if number: contact["number"] = number
 
     saveContacts(all_contacts_list)
 
