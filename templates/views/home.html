@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    <h1>BEM-VINDO</h1>
+{% endblock %}
+
+{% block form %}
+    <form action="/add" method="get">
+        <input type="submit" value="Adicionar contato">
+    </form>
+{% endblock %}
+
+{% block content %}
+    {% for contact in contacts %}
+    <div>
+        <th>
+            <tr>{{ contact["name"] }}</tr>
+            <tr>{{ contact["surname"] }}</tr>
+            <tr>{{ contact["number"] }}</tr>
+
+            <form action="/delete/{{contact['id']}}" method="DELETE">
+                <input type="submit" value="Excluir">
+            </form>
+            
+            <form action="/edit/{{contact['id']}}" method="PUT">
+                <input type="submit" value="Editar">
+            </form>
+
+        </th>
+    </div>
+        <br>
+    {% endfor %}
+{% endblock %}
