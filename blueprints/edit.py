@@ -9,7 +9,6 @@ edit_bp = Blueprint("edit", __name__)
 def edit(id):
 
     if request.method == "GET":
-        print("AAAAAAAAAAAAAA\n\n")
         return render_template("views/edit.html", contact=db.findContact(id))
         
     else:

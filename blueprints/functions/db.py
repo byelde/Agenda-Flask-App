@@ -22,8 +22,6 @@ def saveNewContact(new_contac):
 def deleteContact(id):
     all_contacts_list = getContacts()
     contact = findContact(id)
-    # for contact in all_contacts_list:
-    #     if contact["id"] == id:
     all_contacts_list.remove(contact)
     saveContacts(all_contacts_list)
 
