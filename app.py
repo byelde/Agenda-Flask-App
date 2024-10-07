@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, render_template, url_for
 
 def create_app():
     
@@ -6,22 +6,27 @@ def create_app():
 
     @app.route("/")
     def home():
-        return "<h1>home page</h1>"
+        return render_template("home.html")
 
 
     @app.route("/add")
     def add():
-        return "<h1>adicionar contato</h1>"
+        return render_template("add.html")
 
 
     @app.route("/edit")
     def edit():
-        return "<h1>editar contato</h1>"
+        return render_template("edit.html")
     
-    
+
     @app.route("/remove/<id>")
     def remove(id):
-        return f"<h1>remover contato</h1>\n<p>{id}</p>"
+        return redirect(url_for("home"))
+    
+    
+    # @app.route("/exemplo/<args>")
+    # def exemplo(args):
+    #     return render_template("exemplo.html", dados=args)
     
     return app
 
