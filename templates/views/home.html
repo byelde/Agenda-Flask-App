@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block titulo%}
+    <h1>BEM-VINDO</h1>
+{% endblock %}
+
+{% block formulario %}
+    <form action="/add"> <!-- adicionar method="Get" -->
+        <input type="submit" value="Adicionar contato">
+    </form>
+{% endblock %}
+
+{% block conteudo %}
+    {% for contact in range(5) %} <!-- Substituit por for contact in contacts -->
+    <div>
+        <th>
+            <tr>nome do contato</tr> <!-- adicionar contact["name"] -->
+            <tr>sobrenome do contato</tr> <!-- adicionar contact["surname"] -->
+            <tr>numero do contato</tr> <!-- adicionar contact["number"] -->
+
+            <form action="/delete/id_do_contato" > <!-- adicionar method="Delete" -->
+                <input type="submit" value="Excluir">
+            </form>
+            
+            <form action="/edit/id_do_contato" > <!-- trocar id_do_contato por <id> e adicionar method="Put" -->
+                <input type="submit" value="Editar">
+            </form>
+
+        </th>
+    </div>
+        <br>
+    {% endfor %}
+{% endblock %}
