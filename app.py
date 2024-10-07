@@ -6,20 +6,20 @@ def create_app():
 
     @app.route("/")
     def home():
-        return render_template("home.html")
+        return render_template("views/home.html")
 
 
     @app.route("/add")
     def add():
-        return render_template("add.html")
+        return render_template("views/add.html")
 
 
-    @app.route("/edit")
-    def edit():
-        return render_template("edit.html")
+    @app.route("/edit/<id>") # Deve receber id
+    def edit(id):
+        return render_template("views/edit.html")
     
 
-    @app.route("/remove/<id>")
+    @app.route("/delete/<id>") # Trocar por delete
     def remove(id):
         return redirect(url_for("home"))
     
