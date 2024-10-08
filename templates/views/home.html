@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block formulario %}
-    <form action="/add"> <!-- adicionar method="Get" -->
+    <form action="/add" method="get">
         <input type="submit" value="Adicionar contato">
     </form>
 {% endblock %}
@@ -18,11 +18,11 @@
             <tr>sobrenome do contato</tr> <!-- adicionar contact["surname"] -->
             <tr>numero do contato</tr> <!-- adicionar contact["number"] -->
 
-            <form action="/delete/id_do_contato" > <!-- adicionar method="Delete" -->
+            <form action="/delete/id_do_contato" method="delete">
                 <input type="submit" value="Excluir">
             </form>
             
-            <form action="/edit/id_do_contato" > <!-- trocar id_do_contato por <id> e adicionar method="Put" -->
+            <form action="/edit/id_do_contato" method="put">
                 <input type="submit" value="Editar">
             </form>
 
