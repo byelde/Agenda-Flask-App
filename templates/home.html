@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+    <h1>BEM-VINDO</h1>
+
+    <form action="/add" method="get">
+        <input type="submit" value="Adicionar contato">
+    </form>
+
+
+    {% for contact in range(5) %} <!-- Substituit por for contact in contacts -->
+        <div>
+            <th>
+                <tr>nome do contato</tr> <!-- adicionar contact["name"] -->
+                <tr>sobrenome do contato</tr> <!-- adicionar contact["surname"] -->
+                <tr>numero do contato</tr> <!-- adicionar contact["number"] -->
+        
+                <form action="/delete/id_do_contato" method="post"> <!-- mudar metodo para Delete -->
+                    <input type="submit" value="Excluir">
+                </form>
+                
+                <form action="/edit/id_do_contato" method="get">
+                    <input type="submit" value="Editar">
+                </form>
+        
+            </th>
+        </div>
+        <br>
+    {% endfor %}
+
+
+</body>
+</html>

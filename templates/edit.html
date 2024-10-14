@@ -1,14 +1,19 @@
-{% extends "layout.html" %}
-
-{% block titulo%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
     <h1>Editar contato</h1>
-{% endblock %}
-
-{% block formulario %}
+    
     <form action="#" method="Post"> <!-- mudar metodo para PUT -->
         <input name="name" type="text" placeholder="Nome" value="nome do contato"> <!-- adicionar: value=contact["name"] -->
         <input name="surname" type="text" placeholder="Sobrenome" value="sobrenome do contato"> <!-- adicionar: value=contact["surname"] -->
         <input name="number" type="text" placeholder="Numero" value="numero do contato"> <!-- adicionar: value=contact["number"] -->
         <input type="submit" value="Salvar">
     </form>
-{% endblock %}
+
+</body>
+</html>

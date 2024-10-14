@@ -7,7 +7,7 @@ def create_app():
     @app.route("/", methods=["GET"])
     def home():
         # carregar a pagina
-        return render_template("views/home.html")
+        return render_template("home.html")
 
 
     @app.route("/add", methods=["GET", "POST"])
@@ -15,7 +15,7 @@ def create_app():
 
         if request.method == "GET":
             # carregar a pagina
-            return render_template("views/add.html")
+            return render_template("add.html")
     
         else:
             # recolher o conteudo dos campos
@@ -27,7 +27,7 @@ def create_app():
             if not (contact_name and contact_surname and contact_number):
                 # Flash/Pop-Up
                 # carregar a pagina novamente para ser preenchida
-                return render_template("views/add.html")
+                return render_template("add.html")
             
             # estruturar um novo contato
             new_contact = {
@@ -49,7 +49,7 @@ def create_app():
     def edit(id):
         if request.method == "GET":
             # carregar a pagina
-            return render_template("views/edit.html") # Adicionar contact (como esta no html)
+            return render_template("edit.html") # Adicionar contact (como esta no html)
             
         else:
             # recolher o conteudo dos campos
@@ -61,7 +61,7 @@ def create_app():
             if not (contact_name or contact_surname or contact_number ):
                 # Flash/Pop-Up
                 # carregar pagina para ser preenchida novamente
-                return render_template("views/edit.html") # Adicionar contact (como esta no html)
+                return render_template("edit.html") # Adicionar contact (como esta no html)
 
             # Editar contato no banco de dados
             # ...
