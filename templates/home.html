@@ -12,15 +12,14 @@
         <input type="submit" value="Adicionar contato">
     </form>
 
-
-    {% for contact in range(5) %} <!-- Substituit por for contact in contacts -->
+    {% for contact in range(5) %}
         <div>
             <th>
-                <tr>nome do contato</tr> <!-- adicionar contact["name"] -->
-                <tr>sobrenome do contato</tr> <!-- adicionar contact["surname"] -->
-                <tr>numero do contato</tr> <!-- adicionar contact["number"] -->
+                <tr>nome do contato</tr> 
+                <tr>sobrenome do contato</tr> 
+                <tr>numero do contato</tr>
         
-                <form action="/delete/id_do_contato" method="post"> <!-- mudar metodo para Delete -->
+                <form action="/remove/id_do_contato" method="post">
                     <input type="submit" value="Excluir">
                 </form>
                 
