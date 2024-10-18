@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
     <h1>Adicionar contato</h1>
 
@@ -13,5 +15,15 @@
         <input name="number" type="text" placeholder="Numero">
         <input type="submit" value="Salvar">
     </form>
+    {% block flash %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% endblock %}
 </body>
+
 </html>
