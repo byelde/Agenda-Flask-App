@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <h1>BEM-VINDO</h1>
+
+    <form action="/add" method="get">
+        <input type="submit" value="Adicionar contato">
+    </form>
+    {% for contact in contacts %}
+    <div>
+        <th>
+            <tr>{{contact.name}}</tr>
+            <tr>{{contact.surname}}</tr>
+            <tr>{{contact.number}}</tr>
+
+            <form action="/remove/{{contact.id}}" method="post">
+                <input type="submit" value="Excluir">
+            </form>
+
+            <form action="/edit/{{contact.id}}" method="get">
+                <input type="submit" value="Editar">
+            </form>
+
+        </th>
+    </div>
+    <br>
+    {% endfor %}
+
+
+</body>
+
+</html>

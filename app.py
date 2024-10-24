@@ -1,17 +1,67 @@
-from flask import Flask
-from .blueprints import home_bp, add_bp, delete_bp, edit_bp
+from flask import Flask, render_template, redirect, url_for, request, flash
+import db
 
-# create app
-def create_app():
-    app = Flask(__name__)
-    app.config["SECRET_KEY"] = "chave_super_secreta!@%^&"
+app = Flask(__name__)
+app.secret_key = "12345"
 
-    app.register_blueprint(home_bp)
-    app.register_blueprint(add_bp)
-    app.register_blueprint(delete_bp)
-    app.register_blueprint(edit_bp)
 
-    return app
+@app.route("/")
+def home():
+    return render_template("home.html", contacts=db.getContactList())
 
-if __name__ == "__main__":
-    app = create_app()
+
+@app.route("/add", methods=["GET", "POST"])
+def add():
+    if request.method == "GET":
+        return render_template("add.html")
+    else:
+        contact_name = request.form.get("name")
+        contact_surname = request.form.get("surname")
+        contact_number = request.form.get("number")
+
+        if not (contact_name and contact_surname and contact_number):
+            return render_template("add.html")
+
+        if db.checkExists(contact_number):
+            flash("numero ja registrado")
+            return render_template("add.html")
+
+        new_contact = {
+            "name": contact_name,
+            "surname": contact_surname,
+            "number": contact_number,
+        }
+
+        db.saveNewContact(new_contact)
+
+        return redirect(url_for("home"))
+
+
+@app.route("/edit/<id>", methods=["GET", "POST"])
+def edit(id):
+    if request.method == "GET":
+        return render_template("edit.html")
+
+    else:
+        contact_name = request.form.get("name")
+        contact_surname = request.form.get("surname")
+        contact_number = request.form.get("number")
+
+        if not (contact_name or contact_surname or contact_number):
+            return render_template("edit.html")
+
+        db.editContact(id, contact_name, contact_surname, contact_number)
+
+        return redirect(url_for("home"))
+
+
+@app.route("/remove/<id>", methods=["GET", "POST"])
+def remove(id):
+    if request.method != "GET":
+
+        db.deleteContact(id)
+
+    return redirect(url_for("home"))
+
+
+app.run(debug=True)
